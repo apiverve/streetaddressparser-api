@@ -1,0 +1,72 @@
+openapi: 3.0.4
+info:
+  title: Street Address Parser
+  description: Street Address Parser is a simple tool for parsing a US street addresses. It returns the parsed components of the street address provided.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/streetaddressparser:
+    get:
+      summary: Parse Street Address
+      description: Street Address Parser is a simple tool for parsing a US street addresses. It returns the parsed components of the street address provided.
+      operationId: streetaddressparser
+      parameters:
+      - name: address
+        in: query
+        schema:
+          type: string
+        required: true
+        description: The street address to parse
+        example: 1600 Amphitheatre Parkway, Mountain View, CA 90210
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  address: 1600 Amphitheatre Parkway, Mountain View, CA 90210
+                  parsed:
+                    streetNumber: '1600'
+                    streetType: Pkwy
+                    streetAddress: Amphitheatre
+                    cityName: Mountain View
+                    stateName: CA
+                    zipCode: '90210'
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
