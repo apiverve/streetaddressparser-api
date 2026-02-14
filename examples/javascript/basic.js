@@ -13,12 +13,7 @@ const API_URL = 'https://api.apiverve.com/v1/streetaddressparser';
  */
 async function callStreetAddressParserAPI() {
   try {
-    // Query parameters
-    const params &#x3D; new URLSearchParams({
-            address: &#x27;1600 Amphitheatre Parkway, Mountain View, CA 90210&#x27;
-        });
-
-    const response = await fetch(`${API_URL}?${params}`, {
+    const response = await fetch(API_URL, {
       method: 'GET',
       headers: {
         'x-api-key': API_KEY
