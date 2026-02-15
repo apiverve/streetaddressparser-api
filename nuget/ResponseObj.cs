@@ -39,7 +39,6 @@ namespace APIVerve.API.StreetAddressParser
     public partial class Parsed
     {
         [JsonProperty("streetNumber")]
-        [JsonConverter(typeof(ParseStringConverter))]
         public long StreetNumber { get; set; }
 
         [JsonProperty("streetType")]
@@ -55,7 +54,6 @@ namespace APIVerve.API.StreetAddressParser
         public string StateName { get; set; }
 
         [JsonProperty("zipCode")]
-        [JsonConverter(typeof(ParseStringConverter))]
         public long ZipCode { get; set; }
     }
 }
