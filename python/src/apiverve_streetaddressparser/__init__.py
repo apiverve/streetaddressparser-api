@@ -1,1 +1,3 @@
-from .apiClient import StreetaddressparserAPIClient
+from .apiClient import StreetaddressparserAPIClient, StreetaddressparserAPIClientError
+
+__all__ = ['StreetaddressparserAPIClient', 'StreetaddressparserAPIClientError']
