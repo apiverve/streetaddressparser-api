@@ -10,20 +10,14 @@ if os.path.exists(requirements_file):
 
 setup(
     name='apiverve_streetaddressparser',
-    version='1.1.12',
+    version='1.1.13',
     packages=find_packages(),
     include_package_data=True,
     install_requires=install_requires,
     description='Street Address Parser is a simple tool for parsing a US street addresses. It returns the parsed components of the street address provided.',
     author='APIVerve',
     author_email='hello@apiverve.com',
-    url='https://apiverve.com',
-    project_urls={
-        'Homepage': 'https://apiverve.com',
-        'Documentation': 'https://docs.apiverve.com/ref/streetaddressparser',
-        'Source': 'https://github.com/apiverve/streetaddressparser-api',
-        'Bug Tracker': 'https://github.com/apiverve/streetaddressparser-api/issues'
-    },
+    url='https://streetaddressparser.apiverve.com?utm_source=pypi&utm_medium=homepage',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Operating System :: OS Independent',
