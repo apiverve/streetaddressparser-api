@@ -224,8 +224,9 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient
 
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]")
 
+query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+
 try:
-    query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
     result = api.execute(query)
     print(result)
 finally:
