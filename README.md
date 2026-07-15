@@ -30,7 +30,11 @@ The Street Address Parser API provides a simple, reliable way to integrate stree
 ```javascript
 async function callStreetAddressParserAPI() {
     try {
-        const response = await fetch('https://api.apiverve.com/v1/streetaddressparser', {
+        const params = new URLSearchParams({
+            address: '1600 Amphitheatre Parkway, Mountain View, CA 90210'
+        });
+
+        const response = await fetch(`https://api.apiverve.com/v1/streetaddressparser?${params}`, {
             method: 'GET',
             headers: {
                 'x-api-key': 'YOUR_API_KEY_HERE'
@@ -50,7 +54,7 @@ callStreetAddressParserAPI();
 ### Using cURL
 
 ```bash
-curl -X GET "https://api.apiverve.com/v1/streetaddressparser?param=value" \
+curl -X GET "https://api.apiverve.com/v1/streetaddressparser?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View%2C%20CA%2090210" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
@@ -150,7 +154,7 @@ go get github.com/apiverve/streetaddressparser-api/go
 |---------|---------|
 | **Multi-language SDKs** | Native packages for JavaScript, Python, C#, Go, and Android |
 | **Simple Integration** | Single API key authentication, consistent response format |
-| **Production Ready** | 99.9% uptime, fast response times, used by thousands of developers |
+| **Production Ready** | 99.9% uptime SLA, served from 24 global regions |
 | **Comprehensive Docs** | Full examples, OpenAPI spec, and dedicated support |
 
 ---
@@ -169,7 +173,7 @@ go get github.com/apiverve/streetaddressparser-api/go
 The Street Address Parser API is commonly used for:
 
 - **Web Applications** - Add street address parser features to your frontend or backend
-- **Mobile Apps** - Native SDKs for iOS and Android development
+- **Mobile Apps** - Native SDKs for Android development
 - **Automation** - Integrate with n8n, Zapier, or custom workflows
 - **SaaS Products** - Enhance your product with street address parser capabilities
 - **Data Pipelines** - Process and analyze data at scale
