@@ -25,6 +25,9 @@ namespace APIVerve.API.StreetAddressParser
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -39,7 +42,7 @@ namespace APIVerve.API.StreetAddressParser
     public partial class Parsed
     {
         [JsonProperty("streetNumber")]
-        public long StreetNumber { get; set; }
+        public long? StreetNumber { get; set; }
 
         [JsonProperty("streetType")]
         public string StreetType { get; set; }
@@ -54,6 +57,18 @@ namespace APIVerve.API.StreetAddressParser
         public string StateName { get; set; }
 
         [JsonProperty("zipCode")]
-        public long ZipCode { get; set; }
+        public long? ZipCode { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
