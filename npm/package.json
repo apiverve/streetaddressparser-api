@@ -1,7 +1,7 @@
 {
   "name": "@apiverve/streetaddressparser",
-  "version": "1.2.0",
-  "description": "Street Address Parser is a simple tool for parsing a US street addresses. It returns the parsed components of the street address provided.",
+  "version": "1.2.2",
+  "description": "Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.",
   "main": "index.js",
   "types": "index.d.ts",
   "sideEffects": false,
@@ -23,7 +23,7 @@
     "directory": "npm"
   },
   "keywords": [
-    "street address parser", "street address parser api", "street address parser tool", "street address parser software", "street address parser service"
+    "address parsing api", "street address parser api", "address parser", "address normalization api", "parse street address"
   ],
   "author": {
     "name": "APIVerve",
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/apiverve/streetaddressparser-api/issues"
   },
-  "homepage": "https://streetaddressparser.apiverve.com?utm_source=npm&utm_medium=homepage",
+  "homepage": "https://apiverve.com/marketplace/streetaddressparser?utm_source=npm&utm_medium=referral&utm_content=homepage",
   "devDependencies": {
     "mocha": "^11.0.1",
     "chai": "^5.1.2",
