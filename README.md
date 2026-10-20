@@ -1,13 +1,13 @@
-# [Street Address Parser API](https://streetaddressparser.apiverve.com?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+# [Street Address Parser API](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
-Street Address Parser is a simple tool for parsing a US street addresses. It returns the parsed components of the street address provided.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
 
 The Street Address Parser API provides a simple, reliable way to integrate street address parser functionality into your applications. Built for developers who need production-ready street address parser capabilities without the complexity of building from scratch.
 
-**[View API Details →](https://streetaddressparser.apiverve.com?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)**
+**[View API Details →](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://streetaddressparser.apiverve.com?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 [![Method](https://img.shields.io/badge/Method-GET-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Multi--Platform-orange.svg)](#installation)
 
@@ -161,7 +161,7 @@ go get github.com/apiverve/streetaddressparser-api/go
 
 ## Documentation
 
-- 🏠 **API Home:** [Street Address Parser API](https://streetaddressparser.apiverve.com?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home:** [Street Address Parser API](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 📚 **API Reference:** [docs.apiverve.com/ref/streetaddressparser](https://docs.apiverve.com/ref/streetaddressparser)
 - 📖 **OpenAPI Spec:** [openapi.yaml](./openapi.yaml)
 - 💡 **Examples:** [examples/](./examples/)
@@ -191,11 +191,36 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the Street Address Parser API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "parsed": {
+      "streetNumber": "1600",
+      "streetType": "Pkwy",
+      "streetAddress": "Amphitheatre",
+      "cityName": "Mountain View",
+      "stateName": "CA",
+      "zipCode": "90210"
+    }
+  }
 }
 ```
 
@@ -203,7 +228,7 @@ All responses are JSON with this structure:
 
 ## Support & Community
 
-- 🏠 **API Home**: [Street Address Parser API](https://streetaddressparser.apiverve.com?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home**: [Street Address Parser API](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 💬 **Support**: [https://apiverve.com/contact](https://apiverve.com/contact)
 - 🐛 **Issues**: [GitHub Issues](../../issues)
 - 📖 **Documentation**: [https://docs.apiverve.com](https://docs.apiverve.com)

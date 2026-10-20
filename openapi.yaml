@@ -2,8 +2,10 @@ openapi: 3.0.4
 info:
   title: Street Address Parser
   description: >-
-    Street Address Parser is a simple tool for parsing a US street addresses. It
-    returns the parsed components of the street address provided.
+    Street Address Parser is an address parsing API that breaks raw US street
+    addresses into structured location components. Pass any single-line address
+    string to extract the building number, street name, street type, city, state
+    abbreviation, and postal code.
   termsOfService: https://apiverve.com/terms/
   contact:
     name: APIVerve Support
@@ -18,7 +20,7 @@ servers:
 paths:
   /v1/streetaddressparser:
     get:
-      summary: Parse Street Address
+      summary: Street Address Parser
       description: Parse the components of a street address
       operationId: streetaddressparser
       parameters:
