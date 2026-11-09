@@ -37,6 +37,9 @@ namespace APIVerve.API.StreetAddressParser
 
         [JsonProperty("parsed")]
         public Parsed Parsed { get; set; }
+
+        [JsonProperty("standardized")]
+        public Standardized Standardized { get; set; }
     }
 
     public partial class Parsed
@@ -58,6 +61,21 @@ namespace APIVerve.API.StreetAddressParser
 
         [JsonProperty("zipCode")]
         public long? ZipCode { get; set; }
+    }
+
+    public partial class Standardized
+    {
+        [JsonProperty("addressType")]
+        public string AddressType { get; set; }
+
+        [JsonProperty("deliveryLine1")]
+        public string DeliveryLine1 { get; set; }
+
+        [JsonProperty("lastLine")]
+        public string LastLine { get; set; }
+
+        [JsonProperty("zipPlus4")]
+        public object ZipPlus4 { get; set; }
     }
 
     public partial class Premium

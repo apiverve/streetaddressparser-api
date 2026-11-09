@@ -1,7 +1,7 @@
 Street Address Parser API
 ============
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 
 [![NuGet version](https://img.shields.io/nuget/v/APIVerve.API.StreetAddressParser.svg)](https://www.nuget.org/packages/APIVerve.API.StreetAddressParser)
@@ -60,7 +60,8 @@ class Program
         var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new StreetAddressParserQueryOptions {
-            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+            Standardize = true
         };
 
         // Make the API call
@@ -124,7 +125,8 @@ public class Example
         var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new StreetAddressParserQueryOptions {
-            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+            Standardize = true
         };
 
         var response = await apiClient.ExecuteAsync(queryOptions);
@@ -156,7 +158,8 @@ public class Example
         var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new StreetAddressParserQueryOptions {
-            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+            Standardize = true
         };
 
         var response = apiClient.Execute(queryOptions);
@@ -193,7 +196,8 @@ public class Example
         var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]");
 
         var queryOptions = new StreetAddressParserQueryOptions {
-            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+            Standardize = true
         };
 
         try
@@ -249,7 +253,8 @@ public class Example
         apiClient.SetRetryDelay(2000);     // Wait 2 seconds between retries
 
         var queryOptions = new StreetAddressParserQueryOptions {
-            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+            Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+            Standardize = true
         };
 
         try
@@ -290,7 +295,8 @@ apiClient.AddCustomHeader("X-Custom-Header", "custom-value");
 apiClient.AddCustomHeader("X-Request-ID", Guid.NewGuid().ToString());
 
 var queryOptions = new StreetAddressParserQueryOptions {
-    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    Standardize = true
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -316,7 +322,8 @@ apiClient.SetLogger(message =>
 });
 
 var queryOptions = new StreetAddressParserQueryOptions {
-    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    Standardize = true
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -334,7 +341,8 @@ apiClient.SetMaxRetries(3);           // Retry up to 3 times (default: 0, max: 3
 apiClient.SetRetryDelay(1500);        // Wait 1.5 seconds between retries (default: 1000ms)
 
 var queryOptions = new StreetAddressParserQueryOptions {
-    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    Standardize = true
 };
 
 var response = await apiClient.ExecuteAsync(queryOptions);
@@ -346,7 +354,8 @@ The API client implements `IDisposable` for proper resource cleanup:
 
 ```csharp
 var queryOptions = new StreetAddressParserQueryOptions {
-    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+    Address = "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    Standardize = true
 };
 
 using (var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]"))
@@ -374,6 +383,12 @@ using (var apiClient = new StreetAddressParserAPIClient("[YOUR_API_KEY]"))
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }
