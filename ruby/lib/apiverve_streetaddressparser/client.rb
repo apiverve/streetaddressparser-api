@@ -10,7 +10,7 @@ module APIVerve
     #
     # @example Basic usage
     #   client = APIVerve::Streetaddressparser::Client.new(api_key: "your_api_key")
-    #   response = client.execute({ address: "1600 Amphitheatre Parkway, Mountain View, CA 90210" })
+    #   response = client.execute({ address: "1600 Amphitheatre Parkway, Mountain View, CA 90210", standardize: true })
     #   puts response
     #
     # @see https://apiverve.com/marketplace/streetaddressparser?utm_source=ruby&utm_medium=referral&utm_content=readme
@@ -19,7 +19,7 @@ module APIVerve
       DEFAULT_TIMEOUT = 30
 
       # Validation rules for parameters
-      VALIDATION_RULES = { 'address' => { type: 'string', required: true } }
+      VALIDATION_RULES = { 'address' => { type: 'string', required: true }, 'standardize' => { type: 'boolean', required: false } }
 
       # Format validation patterns
       FORMAT_PATTERNS = {

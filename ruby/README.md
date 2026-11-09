@@ -1,6 +1,6 @@
 # Street Address Parser API - Ruby Gem
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 ## Installation
 
@@ -35,7 +35,10 @@ require 'apiverve_streetaddressparser'
 client = APIVerve::Streetaddressparser::Client.new(api_key: "YOUR_API_KEY")
 
 # Make a request
-response = client.execute({ address: "1600 Amphitheatre Parkway, Mountain View, CA 90210" })
+response = client.execute({
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+  standardize: true
+})
 
 # Print the response
 puts response
@@ -46,7 +49,7 @@ puts response
 
 ```ruby
 begin
-  response = client.execute({ address: "1600 Amphitheatre Parkway, Mountain View, CA 90210" })
+  response = client.execute({ address: "1600 Amphitheatre Parkway, Mountain View, CA 90210", standardize: true })
   puts response["data"]
 rescue APIVerve::Streetaddressparser::ValidationError => e
   puts "Validation error: #{e.errors.join(', ')}"
@@ -81,6 +84,12 @@ client = APIVerve::Streetaddressparser::Client.new(
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }

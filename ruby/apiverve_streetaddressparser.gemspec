@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |spec|
   spec.name          = "apiverve_streetaddressparser"
-  spec.version       = "1.2.4"
+  spec.version       = "1.2.5"
   spec.authors       = ["APIVerve"]
   spec.email         = ["hello@apiverve.com"]
 
   spec.summary       = "Street Address Parser API - Ruby Client"
-  spec.description   = "Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code."
+  spec.description   = "Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4."
   spec.homepage      = "https://apiverve.com/marketplace/streetaddressparser?utm_source=ruby&utm_medium=referral&utm_content=homepage"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.7.0"
