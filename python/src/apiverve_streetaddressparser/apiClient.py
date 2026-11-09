@@ -24,7 +24,8 @@ class ValidationError(StreetaddressparserAPIClientError):
 class StreetaddressparserAPIClient:
     # Validation rules for parameters (generated from schema)
     VALIDATION_RULES = {
-        "address": {"type": "string", "required": True}
+        "address": {"type": "string", "required": True},
+        "standardize": {"type": "boolean", "required": False, "default": False}
     }
 
     # Format validation patterns

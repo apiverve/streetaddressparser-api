@@ -1,7 +1,7 @@
 Street Address Parser API
 ============
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 
 [![PyPI version](https://img.shields.io/pypi/v/apiverve-streetaddressparser.svg)](https://pypi.org/project/apiverve-streetaddressparser/)
@@ -43,7 +43,10 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient
 # Initialize the client with your APIVerve API key
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]")
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 try:
     # Make the API call
@@ -81,7 +84,10 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```python
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 ```
 
 ###### Simple Request
@@ -109,6 +115,12 @@ print(result)
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }
@@ -127,7 +139,10 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient,
 
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]")
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 try:
     result = api.execute(query)
@@ -148,7 +163,10 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient,
 
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]")
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 try:
     result = api.execute(query)
@@ -182,7 +200,10 @@ The client supports the context manager protocol for automatic resource cleanup:
 ```python
 from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient, StreetaddressparserAPIClientError
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 # Using context manager ensures proper cleanup
 with StreetaddressparserAPIClient("[YOUR_API_KEY]") as api:
@@ -208,7 +229,10 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient
 # Enable debug mode
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]", debug=True)
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 # Debug information will be printed to console
 result = api.execute(query)
@@ -223,7 +247,10 @@ from apiverve_streetaddressparser.apiClient import StreetaddressparserAPIClient
 
 api = StreetaddressparserAPIClient("[YOUR_API_KEY]")
 
-query = { "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210" }
+query = {
+    "address": "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+    "standardize": true
+}
 
 try:
     result = api.execute(query)
