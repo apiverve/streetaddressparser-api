@@ -1,6 +1,6 @@
 # [Street Address Parser API](https://apiverve.com/marketplace/streetaddressparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize&#x3D;true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 The Street Address Parser API provides a simple, reliable way to integrate street address parser functionality into your applications. Built for developers who need production-ready street address parser capabilities without the complexity of building from scratch.
 
@@ -31,7 +31,8 @@ The Street Address Parser API provides a simple, reliable way to integrate stree
 async function callStreetAddressParserAPI() {
     try {
         const params = new URLSearchParams({
-            address: '1600 Amphitheatre Parkway, Mountain View, CA 90210'
+            address: '1600 Amphitheatre Parkway, Mountain View, CA 90210',
+            standardize: true
         });
 
         const response = await fetch(`https://api.apiverve.com/v1/streetaddressparser?${params}`, {
@@ -54,7 +55,7 @@ callStreetAddressParserAPI();
 ### Using cURL
 
 ```bash
-curl -X GET "https://api.apiverve.com/v1/streetaddressparser?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View%2C%20CA%2090210" \
+curl -X GET "https://api.apiverve.com/v1/streetaddressparser?address=1600%20Amphitheatre%20Parkway%2C%20Mountain%20View%2C%20CA%2090210&standardize=true" \
   -H "x-api-key: YOUR_API_KEY_HERE"
 ```
 
@@ -219,6 +220,12 @@ A real response from the Street Address Parser API:
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }

@@ -15,7 +15,8 @@ async function callStreetAddressParserAPI() {
   try {
     // Query parameters
     const params &#x3D; new URLSearchParams({
-            address: &#x27;1600 Amphitheatre Parkway, Mountain View, CA 90210&#x27;
+            address: &#x27;1600 Amphitheatre Parkway, Mountain View, CA 90210&#x27;,
+            standardize: true
         });
 
     const response = await fetch(`${API_URL}?${params}`, {

@@ -15,6 +15,7 @@ public class BasicExample {
             // Query parameters
             Map&lt;String, Object&gt; parameters &#x3D; new HashMap&lt;&gt;();
         parameters.put(&quot;address&quot;, &quot;1600 Amphitheatre Parkway, Mountain View, CA 90210&quot;);
+        parameters.put(&quot;standardize&quot;, true);
 
             // Execute the API request
             APIResponse response = client.execute(parameters);

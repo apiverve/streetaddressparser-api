@@ -4,8 +4,10 @@ info:
   description: >-
     Street Address Parser is an address parsing API that breaks raw US street
     addresses into structured location components. Pass any single-line address
-    string to extract the building number, street name, street type, city, state
-    abbreviation, and postal code.
+    string to extract the building number, directional, street name, street
+    type, unit, city, state abbreviation, and postal code. Set standardize=true
+    to get the address type (street, PO box or intersection) free, and on paid
+    plans the mailing-format delivery line, last line and ZIP+4.
   termsOfService: https://apiverve.com/terms/
   contact:
     name: APIVerve Support
@@ -21,7 +23,9 @@ paths:
   /v1/streetaddressparser:
     get:
       summary: Street Address Parser
-      description: Parse the components of a street address
+      description: >-
+        Parse the components of a street address, and optionally return it
+        standardized into mailing-label lines with standardize=true
       operationId: streetaddressparser
       parameters:
         - name: address
@@ -31,6 +35,15 @@ paths:
           required: true
           description: The street address to parse
           example: 1600 Amphitheatre Parkway, Mountain View, CA 90210
+        - name: standardize
+          in: query
+          schema:
+            type: boolean
+          required: false
+          description: >-
+            Add a standardized block: the address type, plus on paid plans the
+            delivery line, last line and ZIP+4
+          example: true
       responses:
         '200':
           description: Successful Response
@@ -60,6 +73,11 @@ paths:
                     cityName: Mountain View
                     stateName: CA
                     zipCode: '90210'
+                  standardized:
+                    addressType: street
+                    deliveryLine1: 1600 Amphitheatre Pkwy
+                    lastLine: Mountain View, CA 90210
+                    zipPlus4: null
         '401':
           description: Your request was not authorized, or your API Key was invalid
         '404':

@@ -18,7 +18,7 @@ def call_streetaddressparser_api():
     """
     try:
         # Query parameters
-        params &#x3D; {&#x27;address&#x27;: &#x27;1600 Amphitheatre Parkway, Mountain View, CA 90210&#x27;}
+        params &#x3D; {&#x27;address&#x27;: &#x27;1600 Amphitheatre Parkway, Mountain View, CA 90210&#x27;, &#x27;standardize&#x27;: true}
 
         headers = {
             'x-api-key': API_KEY
