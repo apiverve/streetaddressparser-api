@@ -1,6 +1,6 @@
 # Street Address Parser API
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 [![npm version](https://img.shields.io/npm/v/@apiverve/streetaddressparser.svg)](https://www.npmjs.com/package/@apiverve/streetaddressparser)
 
@@ -57,7 +57,8 @@ Using the API is simple. All you have to do is make a request. The API will retu
 
 ```javascript
 var query = {
-  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+  standardize: false
 };
 
 api.execute(query, function (error, data) {
@@ -77,7 +78,8 @@ You can also use promises to make requests. The API returns a promise that you c
 
 ```javascript
 var query = {
-  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+  standardize: false
 };
 
 api.execute(query)
@@ -98,7 +100,8 @@ You can also use async/await to make requests. The API returns a promise that yo
 ```javascript
 async function makeRequest() {
     var query = {
-  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+  standardize: false
 };
 
     try {
@@ -127,6 +130,12 @@ async function makeRequest() {
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }

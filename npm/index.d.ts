@@ -25,8 +25,9 @@ declare module '@apiverve/streetaddressparser' {
 
 
   interface StreetAddressParserData {
-      address: null | string;
-      parsed:  Parsed;
+      address:      null | string;
+      parsed:       Parsed;
+      standardized: Standardized;
   }
   
   interface Parsed {
@@ -36,6 +37,13 @@ declare module '@apiverve/streetaddressparser' {
       cityName:      null | string;
       stateName:     null | string;
       zipCode:       null | string;
+  }
+  
+  interface Standardized {
+      addressType:   null | string;
+      deliveryLine1: null | string;
+      lastLine:      null | string;
+      zipPlus4:      null;
   }
 
   export default class streetaddressparserWrapper {

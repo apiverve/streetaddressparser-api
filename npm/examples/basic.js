@@ -15,7 +15,8 @@ const api = new streetaddressparserAPI({
 
 // Example query
 var query = {
-  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210"
+  address: "1600 Amphitheatre Parkway, Mountain View, CA 90210",
+  standardize: false
 };
 
 // Make the API request using callback
