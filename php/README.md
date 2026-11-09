@@ -1,6 +1,6 @@
 # Street Address Parser API - PHP Package
 
-Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.
+Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.
 
 ## Installation
 
@@ -27,7 +27,10 @@ use APIVerve\Streetaddressparser\Client;
 $client = new Client('YOUR_API_KEY');
 
 // Make a request
-$response = $client->execute(['address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210']);
+$response = $client->execute([
+    'address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210',
+    'standardize' => true
+]);
 
 // Print the response
 print_r($response);
@@ -42,7 +45,7 @@ use APIVerve\Streetaddressparser\Exceptions\APIException;
 use APIVerve\Streetaddressparser\Exceptions\ValidationException;
 
 try {
-    $response = $client->execute(['address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210']);
+    $response = $client->execute(['address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210', 'standardize' => true]);
     print_r($response['data']);
 } catch (ValidationException $e) {
     echo "Validation error: " . implode(', ', $e->getErrors());
@@ -77,6 +80,12 @@ $client = new Client(
       "cityName": "Mountain View",
       "stateName": "CA",
       "zipCode": "90210"
+    },
+    "standardized": {
+      "addressType": "street",
+      "deliveryLine1": "1600 Amphitheatre Pkwy",
+      "lastLine": "Mountain View, CA 90210",
+      "zipPlus4": null
     }
   }
 }

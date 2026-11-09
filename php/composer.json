@@ -1,7 +1,7 @@
 {
     "name": "apiverve/streetaddressparser",
-    "description": "Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, street name, street type, city, state abbreviation, and postal code.",
-    "version": "1.2.4",
+    "description": "Street Address Parser is an address parsing API that breaks raw US street addresses into structured location components. Pass any single-line address string to extract the building number, directional, street name, street type, unit, city, state abbreviation, and postal code. Set standardize=true to get the address type (street, PO box or intersection) free, and on paid plans the mailing-format delivery line, last line and ZIP+4.",
+    "version": "1.2.5",
     "type": "library",
     "license": "MIT",
     "authors": [

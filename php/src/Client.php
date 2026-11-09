@@ -15,7 +15,7 @@ use APIVerve\Streetaddressparser\Exceptions\ValidationException;
  * @example Basic usage
  * ```php
  * $client = new Client('your_api_key');
- * $response = $client->execute(['address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210']);
+ * $response = $client->execute(['address' => '1600 Amphitheatre Parkway, Mountain View, CA 90210', 'standardize' => true]);
  * print_r($response);
  * ```
  *
@@ -34,7 +34,8 @@ class Client
      * Validation rules for parameters
      */
     private const VALIDATION_RULES = [
-        'address' => ['type' => 'string', 'required' => true]
+        'address' => ['type' => 'string', 'required' => true],
+        'standardize' => ['type' => 'boolean', 'required' => false]
     ];
 
     /**
